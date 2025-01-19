@@ -9,12 +9,14 @@
 <ion-content [fullscreen]="true">
   <ion-list>
     <ion-item *ngFor="let transaction of transactions; let i = index">
-      <ion-icon slot="start" name="{{transaction.category}}"></ion-icon>
+      <ion-icon slot="start" [name]="getIconName(transaction.category)"></ion-icon>
       <ion-label>
         <h2>{{transaction.name}}</h2>
         <p>{{transaction.date}}</p>
       </ion-label>
-      <h3 slot="end">{{transaction.value | currency:'EUR'}}</h3>
+      <h3 slot="end" [ngClass]="{'salary': transaction.category === 'salary', 'expense': transaction.category !== 'salary'}">
+        {{transaction.category === 'salary' ? '+' : '-'}}{{transaction.value | currency:'EUR'}}
+      </h3>
       <ion-button slot="end" color="danger" (click)="deleteTransaction(i)">delete</ion-button>
     </ion-item>
   </ion-list>

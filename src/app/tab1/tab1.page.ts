@@ -7,15 +7,13 @@ import {
   IonButtons, 
 } from '@ionic/angular/standalone';
 import { FinanceService } from '../services/finance.service';
-import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss'],
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, CommonModule, 
-    IonButtons,],
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, CommonModule, IonButtons],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class Tab1Page implements OnInit {
@@ -24,10 +22,17 @@ export class Tab1Page implements OnInit {
   monthlySpend: number = 0;
   recentTransactions: any[] = [];
 
-
   constructor(private financeService: FinanceService) {}
 
   ngOnInit(): void {
+    this.loadData();
+  }
+
+  ionViewWillEnter(): void {
+    this.loadData();
+  }
+
+  private loadData(): void {
     this.myMoney = this.financeService.getMyMoney();
     this.dailySpend = this.financeService.getTotalSpent('daily');
     this.monthlySpend = this.financeService.getTotalSpent('monthly');

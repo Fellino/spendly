@@ -12,6 +12,7 @@ import {
 } from '@ionic/angular/standalone';
 import { FinanceService } from '../services/finance.service';
 import { FormsModule } from '@angular/forms';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab2',
@@ -28,16 +29,17 @@ export class Tab2Page {
     date: new Date().toISOString().split('T')[0],
   }
 
-  constructor(private financeService: FinanceService) {}
+  constructor(private financeService: FinanceService, private navCtrl: NavController) {}
 
   addTransaction(){
-    if (this.transaction.value <= 0 || this.transaction.category === ''){
+    if (this.transaction.value <= 0 || this.transaction.category === '' || isNaN(this.transaction.value) || this.transaction.name.trim() === ''){
       alert('All fields are required and the value should be greater than 0.');
       return;
     }
     this.financeService.addTransaction(this.transaction);
     alert('Transaction added successfully!');
     this.resetForm();
+    this.navCtrl.navigateRoot('/tabs/tab1');
   }
 
   private resetForm(){
@@ -48,4 +50,6 @@ export class Tab2Page {
       date: new Date().toISOString().split('T')[0],
     };
   }
+
+
 }
