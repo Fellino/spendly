@@ -1,17 +1,29 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      Add Transaction
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+<ion-content>
+  <ion-item>
+    <ion-label position="floating">Category</ion-label>
+    <ion-select [(ngModel)]="transaction.category">
+      <ion-select-option value="salary">Salary</ion-select-option>
+      <ion-select-option value="food">Food</ion-select-option>
+      <ion-select-option value="transport">Transport</ion-select-option>
+      <ion-select-option value="house">House</ion-select-option>
+      <ion-select-option value="other">Other</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Name</ion-label>
+    <ion-input type="text" [(ngModel)]="transaction.name"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Value</ion-label>
+    <ion-input type="number" inputmode="numeric" [(ngModel)]="transaction.value"></ion-input>
+  </ion-item>
+  <ion-button expand="block" (click)="addTransaction()">Add</ion-button>
 </ion-content>

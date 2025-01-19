@@ -5,8 +5,6 @@ import {
   IonTitle, 
   IonContent, 
   IonButtons, 
-  IonInput, 
-  IonLabel 
 } from '@ionic/angular/standalone';
 import { FinanceService } from '../services/finance.service';
 import { FormsModule } from '@angular/forms';
@@ -17,7 +15,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss'],
   imports: [IonHeader, IonToolbar, IonTitle, IonContent, CommonModule, 
-    IonButtons, IonInput, IonLabel],
+    IonButtons,],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class Tab1Page implements OnInit {
@@ -30,19 +28,9 @@ export class Tab1Page implements OnInit {
   constructor(private financeService: FinanceService) {}
 
   ngOnInit(): void {
-    this.myMoney = this.financeService.getMoney();
+    this.myMoney = this.financeService.getMyMoney();
     this.dailySpend = this.financeService.getTotalSpent('daily');
     this.monthlySpend = this.financeService.getTotalSpent('monthly');
     this.recentTransactions = this.financeService.getAllTransactions().slice(-5);
-  }
-
-  saveIncome(){
-    if (this.incomeInput > 0) {
-      this.myMoney = this.incomeInput;
-      localStorage.setItem('myMoney', this.myMoney.toString());
-      this.incomeInput = 0;
-    } else {
-      alert('Please enter a valid income.');
-    }
   }
 }
