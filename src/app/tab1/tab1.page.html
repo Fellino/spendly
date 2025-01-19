@@ -1,0 +1,45 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Spendly
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-avatar>
+        <img src="assets/avatar.jpg" alt="User Avatar" />
+      </ion-avatar>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>My Money</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <h2>{{myMoney | currency:'EUR'}}</h2>
+      </ion-card-content>
+    </ion-card>
+  </div>
+    <!--
+  <ion-item>
+    <ion-label position="stacked">Enter your monthly income:</ion-label>
+    <ion-input type="number" [([(ngModel)]="incomeInput")]></ion-input>
+  </ion-item>
+
+  <ion-button expand="block" color="primary" (click)="saveIncome()">Save Income</ion-button>
+
+  <div class="spending-summary">
+    <div>
+      <h3>Daily Spend</h3>
+      <p>${{dailySpend}}</p>
+    </div>
+    <div>
+      <h3>Monthly Spend</h3>
+      <p>${{monthlySpend}}</p>
+    </div>
+  </div>
+
+<app-explore-container name="Tab 1 page"></app-explore-container>-->
+</ion-content>
