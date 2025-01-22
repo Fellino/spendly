@@ -1,44 +1,90 @@
 <ion-header [translucent]="false">
   <ion-toolbar>
-    <ion-title color="success" class="header-title">
-      <ion-icon src="/src/assets/icon/icon.png"></ion-icon>
+    <ion-title color="success" class="header-title-home" [strong]="true">
       Spendly
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>My Money</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <h2>{{myMoney | currency:'EUR'}}</h2>
-    </ion-card-content>
-  </ion-card>
+  <div class="balance">
+    <h5>Current Balance</h5>
+    <h1>{{myMoney | currency:'EUR'}}</h1>
+  </div>
   <ion-grid>
     <ion-row>
-      <ion-col size="6">
+      <ion-col size="12" size-md="6" class="ion-text-center">
         <ion-card>
           <ion-card-header>
-            <ion-card-title>Daily Spend</ion-card-title>
+            <ion-card-content>
+              Daily Spend
+            </ion-card-content>
           </ion-card-header>
-          <ion-card-content>
-            <h2>{{dailySpend | currency:'EUR'}}</h2>
-          </ion-card-content>
+          <ion-card-title class="spend-card">
+            {{dailySpend | currency:'EUR'}}
+          </ion-card-title>
         </ion-card>
       </ion-col>
-      <ion-col size="6">
+      <ion-col size="12" size-md="6" class="ion-text-center">
         <ion-card>
           <ion-card-header>
-            <ion-card-title>Monthly Spend</ion-card-title>
+            <ion-card-content>Monthly Spend</ion-card-content>
           </ion-card-header>
-          <ion-card-content>
-            <h2>{{monthlySpend | currency:'EUR'}}</h2>
-          </ion-card-content>
+          <ion-card-title class="spend-card">
+            {{monthlySpend | currency:'EUR'}}
+          </ion-card-title>
         </ion-card>
       </ion-col>
     </ion-row>
   </ion-grid>
+  <div class="spending-category">
+    <div class="category-header">
+      <h4>Spending by Category</h4>
+      <h6 (click)="navigateToHistory()">See All</h6>
+    </div>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12" size-md="6" size-lg="3" class="ion-text-center">
+          <ion-card><ion-icon name="fast-food" class="food"></ion-icon>
+            <ion-card-header>
+              <ion-card-content>Food</ion-card-content>
+            </ion-card-header>
+            <ion-card-title>
+              {{foodSpend | currency: 'EUR'}}
+            </ion-card-title>
+          </ion-card>
+        </ion-col>
+        <ion-col size="12" size-md="6" size-lg="3" class="ion-text-center">
+          <ion-card><ion-icon name="home" class="home"></ion-icon>
+            <ion-card-header>
+              <ion-card-content>House</ion-card-content>
+            </ion-card-header>
+            <ion-card-title>
+              {{houseSpend | currency:'EUR'}}
+            </ion-card-title>
+          </ion-card>
+        </ion-col>
+        <ion-col size="12" size-md="6" size-lg="3" class="ion-text-center">
+          <ion-card><ion-icon name="car-sport" class="car"></ion-icon>
+            <ion-card-header>
+              <ion-card-content>Transport</ion-card-content>
+            </ion-card-header>
+            <ion-card-title>
+              {{transportSpend | currency:'EUR'}}
+            </ion-card-title>
+          </ion-card>
+        </ion-col>
+        <ion-col size="12" size-md="6" size-lg="3" class="ion-text-center">
+          <ion-card><ion-icon name="priceTags" class="other"></ion-icon>
+            <ion-card-header>
+              <ion-card-content>Other</ion-card-content>
+            </ion-card-header>
+            <ion-card-title>
+              {{otherSpend | currency: 'EUR'}}
+            </ion-card-title>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 </ion-content>
-

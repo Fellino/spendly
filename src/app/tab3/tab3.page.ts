@@ -35,11 +35,11 @@ export class Tab3Page {
 
   getIconName(category: string): string {
     const iconMap: { [key: string]: string } = {
-      salary: 'cash',
-      food: 'fast-food',
-      transport: 'car-sport',
-      house: 'home',
-      other: 'pricetags',
+      Salary: 'cash',
+      Food: 'fast-food',
+      Transport: 'car-sport',
+      House: 'home',
+      Other: 'pricetags',
     };
     return iconMap[category] || 'help-circle';
   }

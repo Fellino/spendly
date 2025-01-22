@@ -14,10 +14,10 @@
         <h2>{{transaction.name}}</h2>
         <p>{{transaction.date}}</p>
       </ion-label>
-      <h3 slot="end" [ngClass]="{'salary': transaction.category === 'salary', 'expense': transaction.category !== 'salary'}">
-        {{transaction.category === 'salary' ? '+' : '-'}}{{transaction.value | currency:'EUR'}}
+      <h3 slot="end" [ngClass]="{'salary': transaction.category === 'Salary', 'expense': transaction.category !== 'Salary'}">
+        {{transaction.category === 'Salary' ? '+' : '-'}}{{transaction.value | currency:'EUR'}}
       </h3>
-      <ion-button slot="end" color="danger" (click)="deleteTransaction(i)" class="button-text">delete</ion-button>
+      <ion-button slot="end" color="danger" (click)="deleteTransaction(i)" class="button-text" [strong]="true">delete</ion-button>
     </ion-item>
   </ion-list>
 </ion-content>

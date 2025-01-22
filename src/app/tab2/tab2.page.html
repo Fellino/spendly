@@ -10,11 +10,11 @@
   <ion-item>
     <ion-label position="floating">Category</ion-label>
     <ion-select [(ngModel)]="transaction.category">
-      <ion-select-option value="salary">salary</ion-select-option>
-      <ion-select-option value="food">food</ion-select-option>
-      <ion-select-option value="transport">transport</ion-select-option>
-      <ion-select-option value="house">house</ion-select-option>
-      <ion-select-option value="other">other</ion-select-option>
+      <ion-select-option value="salary">Salary</ion-select-option>
+      <ion-select-option value="food">Food</ion-select-option>
+      <ion-select-option value="transport">Transport</ion-select-option>
+      <ion-select-option value="house">House</ion-select-option>
+      <ion-select-option value="other">Other</ion-select-option>
     </ion-select>
   </ion-item>
   <ion-item>
@@ -25,5 +25,5 @@
     <ion-label position="floating">Value</ion-label>
     <ion-input type="number" inputmode="numeric" min="0" [(ngModel)]="transaction.value"></ion-input>
   </ion-item>
-  <ion-button expand="block" (click)="addTransaction()" color="success" class="button-text">Add</ion-button>
+  <ion-button expand="block" (click)="addTransaction()" color="success" class="button-text" [strong]="true">Add</ion-button>
 </ion-content>

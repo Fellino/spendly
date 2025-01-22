@@ -1,4 +1,115 @@
-ion-title{
+.header-title-home{
     font-family: 'CustomFont', sans-serif;
     font-size: 1.5em;
+    font-weight: bold;
 }
+
+ion-header{
+    box-shadow: none;
+}
+
+ion-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin: 0;
+    padding-top: 16px;
+  }
+
+ion-card-content{
+    padding: 0;
+
+  }
+ion-col{
+    padding: 10px;
+    width: 50%;
+    max-width: 50%;
+}
+.balance {
+  line-height: 16px;
+  text-align: center; 
+  margin-bottom: 16px; 
+}
+
+h2{
+    padding-top: 15px;
+}
+
+h5 {
+  font-size: 1.2em;
+  font-weight: 300;
+  margin: 0;
+}
+
+h1 {
+  font-size: 2.5em;
+  margin: 0;
+}
+
+.spend-card{
+    padding-bottom: 16px;
+    font-size: 2em;
+}
+
+div.spending-category{
+    margin-top: 20px;
+}
+
+div.spending-category > h4  {
+    /*padding: 16px;
+    margin-top: 15px;*/
+    font-weight: 500;
+}
+
+div.spending-category h6{
+    cursor: pointer;
+    color: var(--ion-color-success);
+    font-weight: 400;
+    font-size: 14px;
+}
+
+div.spending-category .category-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: last baseline;
+}
+
+div.spending-category ion-card{
+    box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.2);
+}
+
+div.spending-category ion-card-header{
+    padding: 0 16px;
+    margin: 0;
+}
+
+div.spending-category ion-card-title{
+    padding-bottom: 16px;
+}
+
+ion-icon{
+    font-size: 1.5em;
+}
+
+ion-icon.food{
+    color: var(--ion-color-primary);
+}
+
+ion-icon.home{
+    color: var(--ion-color-success);
+}
+
+ion-icon.car{
+    color: var(--ion-color-tertiary);
+}
+
+ion-icon.other{
+    color: var(--ion-color-warning);
+}
+
