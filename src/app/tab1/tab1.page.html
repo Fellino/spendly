@@ -1,27 +1,21 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="false">
   <ion-toolbar>
-    <ion-title>
+    <ion-title color="success" class="header-title">
+      <ion-icon src="/src/assets/icon/icon.png"></ion-icon>
       Spendly
     </ion-title>
-    <ion-buttons slot="end">
-      <ion-avatar>
-        <img src="assets/avatar.jpg" alt="User Avatar" />
-      </ion-avatar>
-    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div>
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title>My Money</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <h2>{{myMoney | currency:'EUR'}}</h2>
-      </ion-card-content>
-    </ion-card>
-  </div>
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>My Money</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <h2>{{myMoney | currency:'EUR'}}</h2>
+    </ion-card-content>
+  </ion-card>
   <ion-grid>
     <ion-row>
       <ion-col size="6">
@@ -47,3 +41,4 @@
     </ion-row>
   </ion-grid>
 </ion-content>
+

@@ -1,1 +1,20 @@
+.fab-button{
+    position: absolute;
+    bottom: 10px;
+    z-index: 1000;
+}
 
+.fab-button ion-fab-button{
+    --width: 70px;
+    --height: 70px;
+    --border-radius: 50%;
+}
+
+.tab-icon{
+    color: var(--ion-color-success);
+}
+
+ion-tab-bar{
+    --color-selected: var(--ion-color-success);
+    font-weight: bold;
+}

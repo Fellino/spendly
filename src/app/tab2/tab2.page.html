@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
+    <ion-title class="header-title" color="success">
       Add Transaction
     </ion-title>
   </ion-toolbar>
@@ -25,5 +25,5 @@
     <ion-label position="floating">Value</ion-label>
     <ion-input type="number" inputmode="numeric" min="0" [(ngModel)]="transaction.value"></ion-input>
   </ion-item>
-  <ion-button expand="block" (click)="addTransaction()">Add</ion-button>
+  <ion-button expand="block" (click)="addTransaction()" color="success" class="button-text">Add</ion-button>
 </ion-content>
