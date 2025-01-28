@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FinanceService {
-  private storageKey = 'spendly-data'
+  private storageKey = 'spendly-data';
   private transactions: any[] = [];
   private myMoney: number = 0;
+  private transactionAdded = new Subject<void>();
+
+  transactionAdded$ = this.transactionAdded.asObservable();
 
   constructor() { this.loadData(); }
 
@@ -51,7 +55,7 @@ export class FinanceService {
     }
     this.transactions.push(transaction);
     this.saveData();
-    console.log('Updated myMoney:', this.myMoney);
+    this.transactionAdded.next(); // Emit event
   }
 
   //get all transaction
@@ -82,12 +86,12 @@ export class FinanceService {
     return total;
   }
 
-  getTotalSpentByCategory(category: string): number{
+  //get spent value by category
+  getTotalSpentByCategory(category: string): number {
     return this.transactions
-      .filter(transaction => transaction.category === category)
+      .filter(transaction => transaction.category.toLowerCase() === category.toLowerCase())
       .reduce((sum, transaction) => sum + transaction.value, 0);
   }
-
   //delete transaction
   deleteTransaction(index: number){
     if (index >= 0 && index < this.transactions.length){
@@ -99,6 +103,7 @@ export class FinanceService {
       }
       this.transactions.splice(index, 1);
       this.saveData();
+      this.transactionAdded.next(); // Emit event
     }
   }
 

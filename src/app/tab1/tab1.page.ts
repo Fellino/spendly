@@ -16,6 +16,8 @@ import { NavController } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { addIcons } from 'ionicons';
 import { fastFood, carSport, home, pricetags } from 'ionicons/icons';
+import { Subscription } from 'rxjs';
+
 
 @Component({
   selector: 'app-tab1',
@@ -34,6 +36,7 @@ export class Tab1Page implements OnInit {
   transportSpend: number = 0;
   otherSpend: number = 0;
   recentTransactions: any[] = [];
+  private transactionSubscription: Subscription | undefined;
 
   constructor(private financeService: FinanceService, private navCtrl: NavController) {
     addIcons({ fastFood, home, carSport, pricetags });
@@ -41,6 +44,7 @@ export class Tab1Page implements OnInit {
 
   ngOnInit(): void {
     this.loadData();
+    this.transactionSubscription = this.financeService.transactionAdded$.subscribe(() => this.loadData());
   }
 
   ionViewWillEnter(): void {
@@ -52,6 +56,7 @@ export class Tab1Page implements OnInit {
   }
 
   private loadData(): void {
+    console.log('Loading data...');
     this.myMoney = this.financeService.getMyMoney();
     this.dailySpend = this.financeService.getTotalSpent('daily');
     this.monthlySpend = this.financeService.getTotalSpent('monthly');
@@ -60,5 +65,15 @@ export class Tab1Page implements OnInit {
     this.transportSpend = this.financeService.getTotalSpentByCategory('transport');
     this.otherSpend = this.financeService.getTotalSpentByCategory('other');
     this.recentTransactions = this.financeService.getAllTransactions().slice(-5);
+    console.log('Data loaded:', {
+      myMoney: this.myMoney,
+      dailySpend: this.dailySpend,
+      monthlySpend: this.monthlySpend,
+      foodSpend: this.foodSpend,
+      houseSpend: this.houseSpend,
+      transportSpend: this.transportSpend,
+      otherSpend: this.otherSpend,
+      recentTransactions: this.recentTransactions
+    });
   }
 }

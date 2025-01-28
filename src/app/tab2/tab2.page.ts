@@ -27,8 +27,8 @@ export class Tab2Page {
     name: '',
     value:0,
     date: new Date().toISOString().split('T')[0],
-  }
-
+  };
+  
   constructor(private financeService: FinanceService, private navCtrl: NavController) {}
 
   addTransaction(){
