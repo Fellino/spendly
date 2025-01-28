@@ -106,9 +106,9 @@ export class FinanceService {
       this.transactionAdded.next(); // Emit event
     }
   }
-
+/* In case of bug in balance value (like not updating when transaction deleted or added)
   clearCacheBalance(){
     this.myMoney = 0;
     this.saveData();
-  }
+  }*/
 }
