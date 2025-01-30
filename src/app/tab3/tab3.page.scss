@@ -14,3 +14,19 @@ ion-header{
     font-family: 'CustomFont', sans-serif;
     font-size: 1.5em;
 }
+
+ion-icon.food{
+    color: var(--ion-color-primary);
+}
+
+ion-icon.home{
+    color: var(--ion-color-success);
+}
+
+ion-icon.car{
+    color: var(--ion-color-tertiary);
+}
+
+ion-icon.other{
+    color: var(--ion-color-warning);
+}

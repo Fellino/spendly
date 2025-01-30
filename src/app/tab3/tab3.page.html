@@ -7,8 +7,23 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <ion-item>
+    <ion-label>Filter by Category</ion-label>
+    <ion-select [(ngModel)]="selectedCategory">
+      <ion-select-option value="salary">Salary</ion-select-option>
+      <ion-select-option value="food">Food</ion-select-option>
+      <ion-select-option value="transport">Transport</ion-select-option>
+      <ion-select-option value="house">House</ion-select-option>
+      <ion-select-option value="other">Other</ion-select-option>
+    </ion-select>
+    <ion-button (click)="resetFilter()" class="filter-button" color="medium">
+      <ion-icon name="refresh"></ion-icon>
+      Reset Filter
+    </ion-button>
+  </ion-item>
+
   <ion-list>
-    <ion-item *ngFor="let transaction of transactions; let i = index">
+    <ion-item *ngFor="let transaction of filteredtransactions">
       <ion-icon slot="start" [name]="getIconName(transaction.category)"></ion-icon>
       <ion-label>
         <h2>{{transaction.name}}</h2>
@@ -17,7 +32,7 @@
       <h3 slot="end" [ngClass]="{'salary': transaction.category === 'Salary', 'expense': transaction.category !== 'Salary'}">
         {{transaction.category === 'Salary' ? '+' : '-'}}{{transaction.value | currency:'EUR'}}
       </h3>
-      <ion-button slot="end" color="danger" (click)="deleteTransaction(i)" class="button-text" [strong]="true">delete</ion-button>
+      <ion-button slot="end" color="danger" (click)="deleteTransaction(transaction)" class="button-text" [strong]="true">Delete</ion-button>
     </ion-item>
   </ion-list>
 </ion-content>
